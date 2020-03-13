@@ -14,7 +14,7 @@ RUN apk update --no-cache && \
 RUN make all
 
 # Runtime stage
-FROM alpine:latest
+FROM gcr.io/distroless/static
 
 COPY --from=build /app/anz-test-2 /app/
 

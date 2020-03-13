@@ -68,6 +68,9 @@ As far as application error handling goes, there is no proper catch or recovery.
 errors, the user would currently receive an HTTP 200 status and unexpected output. Proper error catching
 should be added, for both logging and presenting the API consumer with information they can use to debug.
 
+The built Docker image is also running as privileged user, however if it isn't, then it wouldn't be able
+to receive signals on PID 0. For this reason, the Distroless base image is used rather than Scratch.
+
 
 ## Deployments
 
