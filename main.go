@@ -17,7 +17,7 @@ var (
 
 // ResponseWrapper provides a top level key for serialised JSON responses.
 type ResponseWrapper struct {
-	App AppInfo `json:"myapplication"`
+	App []AppInfo `json:"myapplication"`
 }
 
 // AppInfo provides the current build and version details for the app.
@@ -39,7 +39,7 @@ func Version(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
-	json.NewEncoder(w).Encode(ResponseWrapper{App: myapp})
+	json.NewEncoder(w).Encode(ResponseWrapper{App: []AppInfo{myapp}})
 }
 
 func main() {
