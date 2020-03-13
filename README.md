@@ -24,7 +24,7 @@ push a Docker image and versioned release to the GitHub image and source resposi
 
 The version is dynamically hard set at build time so that a misconfigured deployment won't show a different
 version to what is actually released. This ensures the version running definitely points to the commit
-that it was compiled from.
+that it was compiled from. The `latest` Docker image refers to the latest tagged release and not current master.
 
 
 ## CI Builds
