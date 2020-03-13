@@ -35,6 +35,21 @@ GHA will test on push, and additionally release on new tags along with building 
 deploying to the GitHub Docker registry. Part of the CI process applies `go fmt` and `go vet` to ensure
 good code style and make any apparent issues in code quality clearer.
 
+### Code Coverage
+
+Type definitions generally don't show up in Go code coverage. It's generally impractical to validate
+coverage against things like the server being able to start, so the only meaningful coverage is the
+`Version()` method for rendering a response to API requests.
+
+### Security
+
+Dependencies are pinned to exact git commits, either from an approved HEAD, or specific upstream
+version tag. Only known and explicit dependency versions are installed. The base Docker image used
+is Distroless, an image maintained by Google with only the bare essentials present and mostly
+updated to handle patching relevant CVEs. While scanning the Docker image with a tool such as
+CoreOS Clair is a good idea, it requires a reasonable amount of infrastructure and isn't available
+as a SaaS service.
+
 
 ## Dependencies
 

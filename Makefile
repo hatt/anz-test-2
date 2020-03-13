@@ -48,6 +48,7 @@ tag-version:
 	docker tag $(APP_NAME) $(APP_REPO):$(GIT_VERSION)
 
 test:
+	$(GOCMD) vet ./...
 	$(GOTEST) -cover -v ./...
 
 .PHONY: clean all
