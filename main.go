@@ -9,9 +9,10 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
+// These are defaults used for tests and change at build time.
 var (
-	GitChecksum string
-	GitVersion  string
+	GitChecksum = "1234abc"
+	GitVersion  = "dev"
 )
 
 // ResponseWrapper provides a top level key for serialised JSON responses.
@@ -20,10 +21,11 @@ type ResponseWrapper struct {
 }
 
 // AppInfo provides the current build and version details for the app.
+// Members are out of alphabetical order as instructed by specification document.
 type AppInfo struct {
+	Version     string `json:"version"`
 	Checksum    string `json:"lastcommitsha"`
 	Description string `json:"description"`
-	Version     string `json:"version"`
 }
 
 // Version provides an HTTP handler for the /version endpoint.
