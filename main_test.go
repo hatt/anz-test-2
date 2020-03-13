@@ -21,7 +21,7 @@ func TestGetVersion(t *testing.T) {
 		t.Errorf("Received unexpected status %v", status)
 	}
 
-	expected := `{"myapplication":{"version":"dev","lastcommitsha":"1234abc","description":"pre-interview technical test"}}`
+	expected := `{"myapplication":[{"version":"dev","lastcommitsha":"1234abc","description":"pre-interview technical test"}]}`
 	if strings.TrimRight(rr.Body.String(), "\n") != expected {
 		t.Errorf("Received unexpected body: \n\treceived %v \n\texpected %s",
 			rr.Body.String(), expected)
